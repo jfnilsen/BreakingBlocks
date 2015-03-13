@@ -1,10 +1,17 @@
 package game;
 
+
+
+
+
 import gameField.BlockField;
 import gameObjects.Ball;
 import gameObjects.Racquet;
 import javafx.application.Application;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
@@ -13,8 +20,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	
 	public void start(Stage primaryStage) {
+		
 		
 		Pane playingField = new Pane();
 		BlockField blockField= new BlockField();

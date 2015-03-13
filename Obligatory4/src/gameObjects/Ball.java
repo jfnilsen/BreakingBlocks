@@ -11,23 +11,28 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class Ball extends Circle {
-	double x = 400, y = 510;
-	double dx = 1, dy = -1;
+	double x = getCenterX(), y = getCenterY();
+	double dx = -1, dy = -1;
 	static double radius = 5;
-
+	static Timeline animation = new Timeline();
+	
 	public Ball(Pane pane, Racquet racquet) {
-		super(0, 0, radius);
+		super(415, 490, radius);
 		setFill(Color.WHITE);
-
-		Timeline animation = new Timeline(new KeyFrame(Duration.millis(60),
+		
+		animation = new Timeline(new KeyFrame(Duration.millis(60),
 				e -> moveBall(pane, racquet)));
 		animation.setCycleCount(Timeline.INDEFINITE);
 		animation.setRate(15);
-		animation.play();
 
+	}
+	
+	public static void playBall() {
+		animation.play();
 	}
 
 	public void moveBall(Pane pane, Racquet racquet) {
+		
 		x += dx;
 		y += dy;
 		setCenterX(x);
@@ -44,11 +49,14 @@ public class Ball extends Circle {
 			dy *= -1;
 		}
 
-		if (x == 0 || x > pane.getWidth() - getRadius()) {
+		if (x == 0 + getRadius() || x > pane.getWidth() - getRadius()) {
 			dx *= -1;
 		}
-		if (y == 0 || y > pane.getHeight() - getRadius()) {
+		if (y == 0 + getRadius() || y > pane.getHeight() - getRadius()) {
 			dy *= -1;
+		}
+		if(y == pane.getHeight() - getRadius()){
+			animation.stop();
 		}
 
 	}
