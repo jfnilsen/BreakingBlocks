@@ -1,13 +1,30 @@
 package gameObjects;
 
-import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 public class Timer extends Label{
-	String time = "";
 	
 	public Timer() {
-//		StringProperty valueProperty = new
+		setText("Time: 0");
+		setTextFill(Color.WHITE);
+		relocate(800, 530);
+//		setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
+		
 	}
+	
+	public void displayTimePassed(long timeOfBallStart){
+		if(timeOfBallStart != 0){
+			setText("Time: " + (System.currentTimeMillis() - timeOfBallStart)/1000 +  "");
+		}else {
+			setText("Time: 0");
+		}
+	}
+
+	public String getTime() {
+		String[] timeSpent = getText().split("Time: ");
+		return timeSpent[1];
+	}
+	
 
 }
