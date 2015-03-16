@@ -2,7 +2,6 @@ package gameField;
 
 
 
-
 import gameObjects.BallAnimation;
 import gameObjects.Block;
 import javafx.scene.layout.Background;
@@ -30,8 +29,8 @@ public class BlockField extends Pane {
 	}
 
 	public void addBlocks() {
-		for (int line = 1; line < 2; line++) {
-			for (int i = 1; i < 2; i++) {
+		for (int line = 1; line < 11; line++) {
+			for (int i = 1; i < 14; i++) {
 				double random = Math.random();
 				if (random > 0.2) {
 					Block block = new Block(line,((i*Block.BLOCKWIDTH)+(((i*xPadding)+1))) ,((line*Block.BLOCKHEIGHT)+(((line*yPadding)+1))));
@@ -40,7 +39,7 @@ public class BlockField extends Pane {
 			}
 		}
 		for (int i = 0; i < 15; i++) {
-				getChildren().add(new Block(((i*50)+(((i*xPadding)+1))),0));
+				getChildren().add(new Block(((i*Block.BLOCKWIDTH)+(((i*xPadding)+1))),0));
 
 	}
 	}

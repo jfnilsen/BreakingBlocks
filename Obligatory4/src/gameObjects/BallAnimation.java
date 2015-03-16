@@ -22,6 +22,7 @@ public class BallAnimation extends Circle {
 	static long timeOfBallStart = 0;
 	static int level = 1;
 	static Button nextLevelButton;
+	 static boolean gamePaused = false;
 
 	public BallAnimation(Pane pane, BlockField blockField, Racquet racquet, Timer timer) {
 		super(415, 490, radius);
@@ -49,6 +50,7 @@ public class BallAnimation extends Circle {
 			nextLevelButton.setStyle("-fx-background-color: gray;");
 			nextLevelButton.setText("Next level locked");
 			gameStarted = false;
+			gamePaused = false;
 			level = 1;
 			Block.clearAllBlocks();
 			blockField.addBlocks();
@@ -86,6 +88,7 @@ public class BallAnimation extends Circle {
 				setCenterY(490);
 				setCenterX(racquet.getX() + (racquet.getWidth() / 2));
 				gameStarted = false;
+				gamePaused = false;
 				dy = 0;
 				dx = 0;
 				Main.infoLabels.get(0).setTextFill(Color.WHITE);;
@@ -101,7 +104,7 @@ public class BallAnimation extends Circle {
 	}
 
 	public static void playBall() {
-		if (!gameStarted) {
+		if (!gameStarted && !gamePaused ) {
 			timeOfBallStart = System.currentTimeMillis();
 			dy = -1;
 			dx = -1;
@@ -159,6 +162,7 @@ public class BallAnimation extends Circle {
 			Main.infoLabels.get(2*level).setText(timer.getTime());
 			Main.infoLabels.get(0).setTextFill(Color.RED);;
 			Main.infoLabels.get(0).setText("You lose!");
+			gamePaused = true;
 		}
 
 		if (Block.noBlocksRemaining() && gameStarted) {
@@ -177,6 +181,7 @@ public class BallAnimation extends Circle {
 				animation.stop();
 			}
 			gameStarted = false;
+			gamePaused = true;
 
 		}
 
