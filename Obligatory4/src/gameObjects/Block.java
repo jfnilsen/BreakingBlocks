@@ -59,7 +59,8 @@ public class Block extends Rectangle {
 	}
 
 	public boolean colidesWithSides(BallAnimation ball) {
-		return (ball.getCenterX() + ball.getRadius() == getX() || ball.getCenterX() - ball.getRadius() == getX() + getWidth());
+		return (ball.getCenterX() + ball.getRadius() == getX() ||
+				ball.getCenterX() - ball.getRadius() == getX() + getWidth());
 	}
 	public static boolean noBlocksRemaining() {
 		int blocksDisabled = 0;

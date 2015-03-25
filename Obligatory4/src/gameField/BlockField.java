@@ -11,8 +11,8 @@ import javafx.scene.paint.Color;
 
 public class BlockField extends Pane {
 	
-	private double yPadding = 10;
-	private double xPadding = 10;
+	public final static double YPADDING = 15;
+	public final static double XPADDING = 15;
 	
 	public BlockField() {
 		
@@ -33,13 +33,18 @@ public class BlockField extends Pane {
 			for (int i = 1; i < 14; i++) {
 				double random = Math.random();
 				if (random > 0.2) {
-					Block block = new Block(line,((i*Block.BLOCKWIDTH)+(((i*xPadding)+1))) ,((line*Block.BLOCKHEIGHT)+(((line*yPadding)+1))));
+					Block block = new Block(line,((i*Block.BLOCKWIDTH)+(((i*XPADDING)+1))) ,((line*Block.BLOCKHEIGHT)+(((line*YPADDING)))));
 					getChildren().add(block);
+				}else {
+					Block block = new Block(line,((i*Block.BLOCKWIDTH)+(((i*XPADDING)+1))) ,((line*Block.BLOCKHEIGHT)+(((line*YPADDING)))));
+					block.setVisible(false);
+					getChildren().add(block);
+					
 				}
 			}
 		}
 		for (int i = 0; i < 15; i++) {
-				getChildren().add(new Block(((i*Block.BLOCKWIDTH)+(((i*xPadding)+1))),0));
+				getChildren().add(new Block(((i*Block.BLOCKWIDTH)+(((i*XPADDING)))),0));
 
 	}
 	}

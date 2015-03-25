@@ -42,11 +42,6 @@ public class Main extends Application {
 		playingField.getChildren().add(ball);
 		playingField.getChildren().add(racquet);
 		
-
-		
-		
-
-		
 		Scene scene = new Scene(playingField);
 		primaryStage.setTitle("Breaking Blocks.");
 		primaryStage.setScene(scene);
@@ -101,10 +96,6 @@ public class Main extends Application {
 		blockField.getChildren().add(round3Time);
 		round3Time.relocate(150, 540);
 		infoLabels.add(round3Time);
-		
-
-		
-
 	}
 	
 
