@@ -9,7 +9,6 @@ public class Timer extends Label{
 		setText("Time: 0");
 		setTextFill(Color.WHITE);
 		relocate(800, 530);
-//		setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
 		
 	}
 	
@@ -25,6 +24,4 @@ public class Timer extends Label{
 		String[] timeSpent = getText().split("Time: ");
 		return timeSpent[1];
 	}
-	
-
 }

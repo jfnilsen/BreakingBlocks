@@ -18,7 +18,7 @@ public class Racquet extends Rectangle {
 		});
 	}
 	
-	public boolean collides(BallAnimation ball) {
+	public boolean collides(Ball ball) {
 		return ((ball.getCenterY() + ball.getRadius() == getY() && collidesWithXPos(ball))|| 
 				ball.getCenterY() - ball.getRadius() == getY() + getHeight() && collidesWithXPos(ball))  && 
 				isVisible() && 
@@ -26,22 +26,22 @@ public class Racquet extends Rectangle {
 		
 	}
 
-	private boolean collidesWithXPos(BallAnimation ball) {
+	private boolean collidesWithXPos(Ball ball) {
 		return (ball.getCenterX() >= getX() && ball.getCenterX() <= getX() + getWidth());
 	}
-	private boolean isAtYPos(BallAnimation ball) {
+	private boolean isAtYPos(Ball ball) {
 		return (ball.getCenterY() + ball.getRadius() >= getY() && 
 				ball.getCenterY() - ball.getRadius() <= getY() + getHeight()); 
 	}
 
-	public boolean collidesWithSides(BallAnimation ball) {
+	public boolean collidesWithSides(Ball ball) {
 		return ((ball.getCenterX() + ball.getRadius() == getX() && isAtYPos(ball))|| 
 				(ball.getCenterX() - ball.getRadius() == getX() + getWidth())  && isAtYPos(ball))
 				&& !engulfsBall(ball);
 		
 	}
 	
-	public boolean engulfsBall(BallAnimation ball) {
+	public boolean engulfsBall(Ball ball) {
 		return(ball.getCenterX() + ball.getRadius() > getX() && 
 				ball.getCenterX() - ball.getRadius() < getX() + getWidth()) && 
 				ball.getCenterY() + ball.getRadius() > getY() &&

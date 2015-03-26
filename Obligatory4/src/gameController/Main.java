@@ -1,14 +1,9 @@
-package game;
-
-
-
-
-
+package gameController;
 
 import java.util.ArrayList;
 
 import gameField.BlockField;
-import gameObjects.BallAnimation;
+import gameObjects.Ball;
 import gameObjects.Racquet;
 import gameObjects.Timer;
 import javafx.application.Application;
@@ -33,8 +28,8 @@ public class Main extends Application {
 		Racquet racquet = new Racquet(playingField);
 		Timer timer = new Timer();
 		addInfoPanels(blockField);
-		BallAnimation ball = new BallAnimation(playingField, blockField, racquet, timer);
-		
+		Ball ball = new Ball(5);
+		BallAnimation animation = new BallAnimation(playingField, blockField, racquet, timer, ball);
 		
 		playingField.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
 		playingField.getChildren().add(blockField);
@@ -43,7 +38,7 @@ public class Main extends Application {
 		playingField.getChildren().add(racquet);
 		
 		Scene scene = new Scene(playingField);
-		primaryStage.setTitle("Breaking Blocks.");
+		primaryStage.setTitle("Breaking Blocks");
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
 		primaryStage.show();
@@ -75,7 +70,7 @@ public class Main extends Application {
 		round2Label.setTextFill(Color.WHITE);
 		blockField.getChildren().add(round2Label);
 		round2Label.relocate(90, 525);
-		round2Label.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+		round2Label.setBackground(new Background(new BackgroundFill(Color.DARKRED, null, null)));
 		infoLabels.add(round2Label);
 		
 		Label round2Time = new Label("0");
@@ -88,7 +83,7 @@ public class Main extends Application {
 		round3Label.setTextFill(Color.WHITE);
 		blockField.getChildren().add(round3Label);
 		round3Label.relocate(150, 525);
-		round3Label.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+		round3Label.setBackground(new Background(new BackgroundFill(Color.DARKRED, null, null)));
 		infoLabels.add(round3Label);
 		
 		Label round3Time = new Label("0");

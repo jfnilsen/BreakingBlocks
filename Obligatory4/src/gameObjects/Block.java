@@ -1,13 +1,11 @@
 package gameObjects;
 
-import java.util.ArrayList;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Block extends Rectangle {
 
-	public static ArrayList<Block> blockList = new ArrayList<>();
 	
 	public final static int BLOCKWIDTH = 50;
 	public final static int BLOCKHEIGHT = 10;
@@ -45,38 +43,19 @@ public class Block extends Rectangle {
 			setFill(Color.ORANGE);
 			break;
 		}
-		blockList.add(this);
+			
 		
 	}
 	
-	public boolean collides(BallAnimation ball) {
+	public boolean collides(Ball ball) {
 		return ball.intersects(getX(), getY(), getWidth(),
 					getHeight()) && isVisible();
 		
 	}
-	public static ArrayList<Block> getBlocks(){
-		return blockList;
-	}
-
-	public boolean colidesWithSides(BallAnimation ball) {
+	public boolean colidesWithSides(Ball ball) {
 		return (ball.getCenterX() + ball.getRadius() == getX() ||
 				ball.getCenterX() - ball.getRadius() == getX() + getWidth());
 	}
-	public static boolean noBlocksRemaining() {
-		int blocksDisabled = 0;
-		for(Block block: blockList){
-			if(!block.isVisible()){
-				++blocksDisabled;
-			}
-		}
-		return (blocksDisabled == blockList.size());
-			
-	}
-	public static void clearAllBlocks(){
-		for(Block block: blockList){
-			block.setVisible(false);
-		}
-		blockList.clear();
-	}
+
 	
 }
