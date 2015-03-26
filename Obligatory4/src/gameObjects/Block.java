@@ -1,16 +1,14 @@
 package gameObjects;
 
-import java.util.ArrayList;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Block extends Rectangle {
 
-	public static ArrayList<Block> blockList = new ArrayList<>();
 	
-	final static int BLOCKWIDTH = 50;
-	final static int BLOCKHEIGHT = 10;
+	public final static int BLOCKWIDTH = 50;
+	public final static int BLOCKHEIGHT = 10;
 	
 	public Block() {
 		super(BLOCKWIDTH, BLOCKHEIGHT);
@@ -45,7 +43,7 @@ public class Block extends Rectangle {
 			setFill(Color.ORANGE);
 			break;
 		}
-		blockList.add(this);
+			
 		
 	}
 	
@@ -54,8 +52,10 @@ public class Block extends Rectangle {
 					getHeight()) && isVisible();
 		
 	}
-	public static ArrayList<Block> getBlocks(){
-		return blockList;
+	public boolean colidesWithSides(Ball ball) {
+		return (ball.getCenterX() + ball.getRadius() == getX() ||
+				ball.getCenterX() - ball.getRadius() == getX() + getWidth());
 	}
+
 	
 }
